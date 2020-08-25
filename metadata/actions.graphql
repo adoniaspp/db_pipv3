@@ -1,0 +1,67 @@
+type Mutation {
+  signIn (
+    password: String!
+    user: String!
+  ): signInOutput
+}
+
+
+type Mutation {
+  signUp (
+    id_phone: String!
+    password: String!
+    user: String!
+  ): signUpOutput
+}
+
+
+type Mutation {
+  updateRefreshToken (
+    refresh_token: String!
+    id_phone: String!
+  ): refreshTokenOutput
+}
+
+
+
+
+input SampleInput {
+  username : String!
+  password : String!
+}
+
+input refreshTokenInput {
+  refreshToken : String!
+  idPhone : String!
+}
+
+type SampleOutput {
+  accessToken : String!
+}
+
+type signupOutput {
+  id_usuario : Int!
+}
+
+type userOutput {
+  id : Int!
+}
+
+type signUpOutput {
+  id : Int!
+  token : String!
+  refreshtoken : String!
+}
+
+type signInOutput {
+  id : Int!
+  token : String!
+  refreshtoken : String!
+}
+
+type refreshTokenOutput {
+  id : Int!
+  token : String!
+  refreshtoken : String!
+}
+

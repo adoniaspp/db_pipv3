@@ -1,1 +1,30 @@
-[]
+- table:
+    schema: public
+    name: bairro
+- table:
+    schema: public
+    name: cidade
+- table:
+    schema: public
+    name: endereco
+- table:
+    schema: public
+    name: estado
+- table:
+    schema: public
+    name: pais
+- table:
+    schema: public
+    name: tipoDocumento
+- table:
+    schema: public
+    name: user
+  select_permissions:
+  - role: public
+    permission:
+      columns:
+      - user
+      filter: {}
+- table:
+    schema: public
+    name: usuario

@@ -130,6 +130,3 @@
       columns:
       - user
       filter: {}
-- table:
-    schema: public
-    name: usuario

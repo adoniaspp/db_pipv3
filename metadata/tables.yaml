@@ -1,6 +1,10 @@
 - table:
     schema: public
     name: bairro
+  object_relationships:
+  - name: cidade
+    using:
+      foreign_key_constraint_on: id_cidade
   array_relationships:
   - name: enderecos
     using:
@@ -19,6 +23,25 @@
 - table:
     schema: public
     name: cidade
+  object_relationships:
+  - name: estado
+    using:
+      foreign_key_constraint_on: id_estado
+  array_relationships:
+  - name: bairros
+    using:
+      foreign_key_constraint_on:
+        column: id_cidade
+        table:
+          schema: public
+          name: bairro
+  - name: enderecos
+    using:
+      foreign_key_constraint_on:
+        column: id_cidade
+        table:
+          schema: public
+          name: endereco
 - table:
     schema: public
     name: endereco
@@ -43,6 +66,21 @@
 - table:
     schema: public
     name: estado
+  array_relationships:
+  - name: cidades
+    using:
+      foreign_key_constraint_on:
+        column: id_estado
+        table:
+          schema: public
+          name: cidade
+  - name: enderecos
+    using:
+      foreign_key_constraint_on:
+        column: id_estado
+        table:
+          schema: public
+          name: endereco
 - table:
     schema: public
     name: imovel

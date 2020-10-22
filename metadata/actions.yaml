@@ -2,19 +2,19 @@ actions:
 - name: signIn
   definition:
     kind: synchronous
-    handler: http://172.17.0.4:80/auth/signin
+    handler: http://172.18.0.3:80/auth/signin
   permissions:
   - role: public
 - name: signUp
   definition:
     kind: synchronous
-    handler: http://172.17.0.4:80/auth/signup
+    handler: http://172.18.0.3:80/auth/signup
   permissions:
   - role: public
 - name: updateRefreshToken
   definition:
     kind: synchronous
-    handler: http://172.17.0.4:80/auth/refreshtoken
+    handler: http://172.18.0.3:80/auth/refreshtoken
   permissions:
   - role: public
 custom_types:

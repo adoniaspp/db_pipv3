@@ -1,0 +1,1 @@
+CREATE TABLE "public"."imovel"("id" serial NOT NULL, "area" float4 NOT NULL, "id_endereco" integer NOT NULL, "id_tipo_imovel" integer NOT NULL, "id_usuario" integer NOT NULL, "data_cadastro" timestamptz NOT NULL DEFAULT now(), "data_atualizacao" timestamptz NOT NULL DEFAULT now(), PRIMARY KEY ("id") );

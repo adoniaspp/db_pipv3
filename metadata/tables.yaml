@@ -1,24 +1,91 @@
 - table:
     schema: public
     name: bairro
+  array_relationships:
+  - name: enderecos
+    using:
+      foreign_key_constraint_on:
+        column: id_bairro
+        table:
+          schema: public
+          name: endereco
+- table:
+    schema: public
+    name: casa
+  object_relationships:
+  - name: imovel
+    using:
+      foreign_key_constraint_on: id_imovel
 - table:
     schema: public
     name: cidade
 - table:
     schema: public
     name: endereco
+  object_relationships:
+  - name: bairro
+    using:
+      foreign_key_constraint_on: id_bairro
+  - name: cidade
+    using:
+      foreign_key_constraint_on: id_cidade
+  - name: estado
+    using:
+      foreign_key_constraint_on: id_estado
+  - name: imovel
+    using:
+      manual_configuration:
+        remote_table:
+          schema: public
+          name: imovel
+        column_mapping:
+          id: id_endereco
 - table:
     schema: public
     name: estado
 - table:
     schema: public
-    name: pais
+    name: imovel
+  object_relationships:
+  - name: endereco
+    using:
+      foreign_key_constraint_on: id_endereco
+  - name: tipo_imovel
+    using:
+      foreign_key_constraint_on: id_tipo_imovel
+  - name: user
+    using:
+      foreign_key_constraint_on: id_usuario
+  array_relationships:
+  - name: casas
+    using:
+      foreign_key_constraint_on:
+        column: id_imovel
+        table:
+          schema: public
+          name: casa
 - table:
     schema: public
-    name: tipoDocumento
+    name: tipo_imovel
+  array_relationships:
+  - name: imovels
+    using:
+      foreign_key_constraint_on:
+        column: id_tipo_imovel
+        table:
+          schema: public
+          name: imovel
 - table:
     schema: public
     name: user
+  array_relationships:
+  - name: imovels
+    using:
+      foreign_key_constraint_on:
+        column: id_usuario
+        table:
+          schema: public
+          name: imovel
   select_permissions:
   - role: public
     permission:

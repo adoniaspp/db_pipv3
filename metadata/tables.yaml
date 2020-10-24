@@ -1,5 +1,37 @@
 - table:
     schema: public
+    name: anuncio
+  object_relationships:
+  - name: plano
+    using:
+      foreign_key_constraint_on: id_plano
+  - name: user
+    using:
+      foreign_key_constraint_on: id_usuario
+  array_relationships:
+  - name: emails
+    using:
+      foreign_key_constraint_on:
+        column: id_anuncio
+        table:
+          schema: public
+          name: email
+  - name: telefones
+    using:
+      foreign_key_constraint_on:
+        column: id_anuncio
+        table:
+          schema: public
+          name: telefone
+  - name: valors
+    using:
+      foreign_key_constraint_on:
+        column: id_anuncio
+        table:
+          schema: public
+          name: valor
+- table:
+    schema: public
     name: bairro
   object_relationships:
   - name: cidade
@@ -42,6 +74,13 @@
         table:
           schema: public
           name: endereco
+- table:
+    schema: public
+    name: email
+  object_relationships:
+  - name: anuncio
+    using:
+      foreign_key_constraint_on: id_anuncio
 - table:
     schema: public
     name: endereco
@@ -91,9 +130,6 @@
   - name: tipo_imovel
     using:
       foreign_key_constraint_on: id_tipo_imovel
-  - name: user
-    using:
-      foreign_key_constraint_on: id_usuario
   array_relationships:
   - name: casas
     using:
@@ -102,6 +138,34 @@
         table:
           schema: public
           name: casa
+- table:
+    schema: public
+    name: plano
+  array_relationships:
+  - name: anuncios
+    using:
+      foreign_key_constraint_on:
+        column: id_plano
+        table:
+          schema: public
+          name: anuncio
+  - name: usuario_planos
+    using:
+      foreign_key_constraint_on:
+        column: id_plano
+        table:
+          schema: public
+          name: usuario_plano
+- table:
+    schema: public
+    name: redes_sociais
+- table:
+    schema: public
+    name: telefone
+  object_relationships:
+  - name: anuncio
+    using:
+      foreign_key_constraint_on: id_anuncio
 - table:
     schema: public
     name: tipo_imovel
@@ -117,16 +181,40 @@
     schema: public
     name: user
   array_relationships:
-  - name: imovels
+  - name: anuncios
     using:
       foreign_key_constraint_on:
         column: id_usuario
         table:
           schema: public
-          name: imovel
+          name: anuncio
+  - name: usuario_planos
+    using:
+      foreign_key_constraint_on:
+        column: id_usuario
+        table:
+          schema: public
+          name: usuario_plano
   select_permissions:
   - role: public
     permission:
       columns:
       - user
       filter: {}
+- table:
+    schema: public
+    name: usuario_plano
+  object_relationships:
+  - name: plano
+    using:
+      foreign_key_constraint_on: id_plano
+  - name: user
+    using:
+      foreign_key_constraint_on: id_usuario
+- table:
+    schema: public
+    name: valor
+  object_relationships:
+  - name: anuncio
+    using:
+      foreign_key_constraint_on: id_anuncio

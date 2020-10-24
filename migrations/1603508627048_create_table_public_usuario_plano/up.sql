@@ -1,0 +1,1 @@
+CREATE TABLE "public"."usuario_plano"("id" serial NOT NULL, "id_usuario" integer NOT NULL, "id_plano" integer NOT NULL, "data_cadastro" timestamptz NOT NULL DEFAULT now(), "data_atualizacao" timestamptz NOT NULL DEFAULT now(), "situacao" boolean NOT NULL, PRIMARY KEY ("id") );
